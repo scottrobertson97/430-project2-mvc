@@ -36,7 +36,6 @@ var DrinkList = function DrinkList(props) {
     return React.createElement(
       "div",
       { key: drink._id, className: "drink" },
-      React.createElement("img", { src: "/assets/img/domoface.jpeg", alt: "drink", className: "domoFace" }),
       React.createElement(
         "h3",
         { className: "drinkName" },
@@ -44,7 +43,7 @@ var DrinkList = function DrinkList(props) {
         drink.name
       ),
       React.createElement(
-        "h3",
+        "h4",
         { className: "drinkBase" },
         "Base Ingredient: ",
         drink.baseIngredient

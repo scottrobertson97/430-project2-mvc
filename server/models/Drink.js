@@ -59,7 +59,8 @@ DrinkSchema.statics.findByOwner = (ownerId, callback) => {
 };
 
 DrinkSchema.statics.findAll = (callback) => {
-  return DrinkModel.find().select('name baseIngredient ingredients').exec(callback);
+  const list = DrinkModel.find().select('name baseIngredient ingredients').exec(callback);
+  return list;
 };
 
 DrinkSchema.statics.findByBaseIngredient = (baseIngredient, callback) => {

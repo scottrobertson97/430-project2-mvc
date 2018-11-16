@@ -20,6 +20,7 @@ const handleDrink = (e) => {
 
 const DrinkForm = (props) => {
   return (
+    <div>
     <form id="drinkForm"
       onSubmit={handleDrink}
       name="drinkForm"
@@ -29,7 +30,8 @@ const DrinkForm = (props) => {
     >
       <label htmlFor="name">Name: </label>
       <input id="drinkName" type="text" name="name" placeholder="Drink Name"/>
-      <label htmlFor="baseIngredient">Base Ingredient: </label>
+      <br />
+      <label htmlFor="baseIngredient">Base: </label>
       <select id="baseIngredient" name="baseIngredient">
         <option value="other">Other</option>
         <option value="vodka">Vodka</option>
@@ -38,21 +40,36 @@ const DrinkForm = (props) => {
         <option value="whiskey">Whiskey</option>
         <option value="tequila">Tequila</option>
       </select>
-
+      <br />
       <label htmlFor="ingredientOz">Oz: </label>
-      <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
-      <label htmlFor="ingredientName">Ingredient: </label>
-      <input id="ingredientName" type="text" name="ingredientName" />
-
-      <label htmlFor="ingredientOz">Oz: </label>
-      <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
-      <label htmlFor="ingredientName">Ingredient: </label>
-      <input id="ingredientName" type="text" name="ingredientName" />
-
+        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+        <label htmlFor="ingredientName">Ingredient: </label>
+        <input id="ingredientName" type="text" name="ingredientName" />
+        <br />
+        <label htmlFor="ingredientOz">Oz: </label>
+        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+        <label htmlFor="ingredientName">Ingredient: </label>
+        <input id="ingredientName" type="text" name="ingredientName" />
+        <br />
+        <label htmlFor="ingredientOz">Oz: </label>
+        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+        <label htmlFor="ingredientName">Ingredient: </label>
+        <input id="ingredientName" type="text" name="ingredientName" />
+        <br />
+        <label htmlFor="ingredientOz">Oz: </label>
+        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+        <label htmlFor="ingredientName">Ingredient: </label>
+        <input id="ingredientName" type="text" name="ingredientName" />
+        <br />
+        <label htmlFor="ingredientOz">Oz: </label>
+        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+        <label htmlFor="ingredientName">Ingredient: </label>
+        <input id="ingredientName" type="text" name="ingredientName" />
 
       <input type="hidden" name="_csrf" value={props.csrf}/>
       <input className="makeDrinkSubmit" type="submit" value="Add Drink"/>
     </form>
+    </div>
   );
 };
 
@@ -80,9 +97,8 @@ const DrinkList = function(props) {
   const drinkNodes = props.drinks.map(function(drink) {
     return (
       <div key={drink._id} className="drink">
-        <img src="/assets/img/domoface.jpeg" alt="drink" className="domoFace"/>
         <h3 className="drinkName">Name: {drink.name}</h3>
-        <h3 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h3>        
+        <h4 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h4>        
         {ingredientNode(drink)}
         
       </div>
@@ -106,8 +122,9 @@ const loadDrinksFromServer = () => {
 };
 
 const setup = function(csrf) {
+
   ReactDOM.render(
-    <DrinkForm csrf={csrf} />,
+    <DrinkForm csrf={csrf}/>,
     document.querySelector("#makeDrinks")
   );
 
@@ -115,7 +132,6 @@ const setup = function(csrf) {
     <DrinkList drinks={[]} />,
     document.querySelector("#drinks")
   );
-
   loadDrinksFromServer();
 };
 

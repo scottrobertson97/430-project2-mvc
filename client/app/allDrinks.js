@@ -21,10 +21,9 @@ const DrinkList = function(props) {
 
   const drinkNodes = props.drinks.map(function(drink) {
     return (
-      <div key={drink._id} className="drink">
-        <img src="/assets/img/domoface.jpeg" alt="drink" className="domoFace"/>
+      <div key={drink._id} className="drink">        
         <h3 className="drinkName">Name: {drink.name}</h3>
-        <h3 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h3>
+        <h4 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h4>
         {ingredientNode(drink)}
       </div>
     );
