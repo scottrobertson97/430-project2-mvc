@@ -14,6 +14,24 @@ var DrinkList = function DrinkList(props) {
     );
   }
 
+  var ingredientNode = function ingredientNode(drink) {
+    var ingredients = [];
+    for (var i = 0; i < drink.ingredients.length; i++) {
+      ingredients.push(React.createElement(
+        "div",
+        { className: "drinkIngredient" },
+        React.createElement(
+          "p",
+          null,
+          drink.ingredients[i].oz,
+          " Oz of ",
+          drink.ingredients[i].name
+        )
+      ));
+    }
+    return ingredients;
+  };
+
   var drinkNodes = props.drinks.map(function (drink) {
     return React.createElement(
       "div",
@@ -30,7 +48,8 @@ var DrinkList = function DrinkList(props) {
         { className: "drinkBase" },
         "Base Ingredient: ",
         drink.baseIngredient
-      )
+      ),
+      ingredientNode(drink)
     );
   });
 

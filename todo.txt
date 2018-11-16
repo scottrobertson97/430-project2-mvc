@@ -1,9 +1,9 @@
 make ingredients have a dynamic amount
 
-post drinks to a public view
-
 search drinks by type on the public view
 
 user can edit their own drink
 
 make it look nice
+
+select which drinks are public

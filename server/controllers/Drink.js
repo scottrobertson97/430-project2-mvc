@@ -41,9 +41,16 @@ const makeDrink = (req, res) => {
   const drinkData = {
     name: req.body.name,
     baseIngredient: req.body.baseIngredient,
-    ingredients: [{ name: req.body.ingredientName_0, oz: req.body.ingredientOz_0 }],
+    ingredients: [],
     owner: req.session.account._id,
   };
+
+  for (let i = 0; i < req.body.ingredientOz.length; i++) {
+    drinkData.ingredients.push({
+      name: req.body.ingredientName[i],
+      oz: req.body.ingredientOz[i],
+    });
+  }
 
   const newDrink = new Drink.DrinkModel(drinkData);
 

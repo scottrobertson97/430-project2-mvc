@@ -77,16 +77,28 @@ var DrinkForm = function DrinkForm(props) {
     ),
     React.createElement(
       "label",
-      { "for": "ingredientOz_0" },
+      { htmlFor: "ingredientOz" },
       "Oz: "
     ),
-    React.createElement("input", { id: "ingredientOz_0", type: "number", name: "ingredientOz_0", min: "0", max: "5", step: "0.25" }),
+    React.createElement("input", { id: "ingredientOz", type: "number", name: "ingredientOz", min: "0", max: "5", step: "0.25" }),
     React.createElement(
       "label",
-      { "for": "ingredientName_0" },
+      { htmlFor: "ingredientName" },
       "Ingredient: "
     ),
-    React.createElement("input", { id: "ingredientName_0", type: "text", name: "ingredientName_0" }),
+    React.createElement("input", { id: "ingredientName", type: "text", name: "ingredientName" }),
+    React.createElement(
+      "label",
+      { htmlFor: "ingredientOz" },
+      "Oz: "
+    ),
+    React.createElement("input", { id: "ingredientOz", type: "number", name: "ingredientOz", min: "0", max: "5", step: "0.25" }),
+    React.createElement(
+      "label",
+      { htmlFor: "ingredientName" },
+      "Ingredient: "
+    ),
+    React.createElement("input", { id: "ingredientName", type: "text", name: "ingredientName" }),
     React.createElement("input", { type: "hidden", name: "_csrf", value: props.csrf }),
     React.createElement("input", { className: "makeDrinkSubmit", type: "submit", value: "Add Drink" })
   );
@@ -106,6 +118,24 @@ var DrinkList = function DrinkList(props) {
     );
   }
 
+  var ingredientNode = function ingredientNode(drink) {
+    var ingredients = [];
+    for (var i = 0; i < drink.ingredients.length; i++) {
+      ingredients.push(React.createElement(
+        "div",
+        { className: "drinkIngredient" },
+        React.createElement(
+          "p",
+          null,
+          drink.ingredients[i].oz,
+          " Oz of ",
+          drink.ingredients[i].name
+        )
+      ));
+    }
+    return ingredients;
+  };
+
   var drinkNodes = props.drinks.map(function (drink) {
     return React.createElement(
       "div",
@@ -122,7 +152,8 @@ var DrinkList = function DrinkList(props) {
         { className: "drinkBase" },
         "Base Ingredient: ",
         drink.baseIngredient
-      )
+      ),
+      ingredientNode(drink)
     );
   });
 

@@ -8,12 +8,24 @@ const DrinkList = function(props) {
     );
   }
 
+  const ingredientNode = (drink) => {
+    let ingredients = [];
+    for (let i = 0; i < drink.ingredients.length; i++) {
+      ingredients.push(
+        <div className="drinkIngredient">
+          <p>{drink.ingredients[i].oz} Oz of {drink.ingredients[i].name}</p>
+        </div>);
+    }
+    return ingredients;
+  }
+
   const drinkNodes = props.drinks.map(function(drink) {
     return (
       <div key={drink._id} className="drink">
         <img src="/assets/img/domoface.jpeg" alt="drink" className="domoFace"/>
         <h3 className="drinkName">Name: {drink.name}</h3>
         <h3 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h3>
+        {ingredientNode(drink)}
       </div>
     );
   });

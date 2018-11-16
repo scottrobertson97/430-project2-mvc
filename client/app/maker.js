@@ -39,10 +39,16 @@ const DrinkForm = (props) => {
         <option value="tequila">Tequila</option>
       </select>
 
-      <label for="ingredientOz_0">Oz: </label>
-      <input id="ingredientOz_0" type="number" name="ingredientOz_0" min="0" max="5" step="0.25"/>
-      <label for="ingredientName_0">Ingredient: </label>
-      <input id="ingredientName_0" type="text" name="ingredientName_0" /> 
+      <label htmlFor="ingredientOz">Oz: </label>
+      <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+      <label htmlFor="ingredientName">Ingredient: </label>
+      <input id="ingredientName" type="text" name="ingredientName" />
+
+      <label htmlFor="ingredientOz">Oz: </label>
+      <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
+      <label htmlFor="ingredientName">Ingredient: </label>
+      <input id="ingredientName" type="text" name="ingredientName" />
+
 
       <input type="hidden" name="_csrf" value={props.csrf}/>
       <input className="makeDrinkSubmit" type="submit" value="Add Drink"/>
@@ -60,12 +66,25 @@ const DrinkList = function(props) {
     );
   }
 
+  const ingredientNode = (drink) => {
+    let ingredients = [];
+    for (let i = 0; i < drink.ingredients.length; i++) {
+      ingredients.push(
+        <div className="drinkIngredient">
+          <p>{drink.ingredients[i].oz} Oz of {drink.ingredients[i].name}</p>
+        </div>);
+    }
+    return ingredients;
+  }
+
   const drinkNodes = props.drinks.map(function(drink) {
     return (
       <div key={drink._id} className="drink">
         <img src="/assets/img/domoface.jpeg" alt="drink" className="domoFace"/>
         <h3 className="drinkName">Name: {drink.name}</h3>
-        <h3 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h3>
+        <h3 className="drinkBase">Base Ingredient: {drink.baseIngredient}</h3>        
+        {ingredientNode(drink)}
+        
       </div>
     );
   });
