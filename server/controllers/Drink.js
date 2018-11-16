@@ -91,6 +91,7 @@ const getAllDrinks = (request, response) => {
   return Drink.DrinkModel.findAll((err, docs) => {
     if (err) {
       console.log(err);
+      console.log(req);
       return res.status(400).json({ error: 'An error occurred' });
     }
 
