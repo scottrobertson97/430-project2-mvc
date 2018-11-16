@@ -60,11 +60,6 @@ const DrinkForm = (props) => {
         <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
         <label htmlFor="ingredientName">Ingredient: </label>
         <input id="ingredientName" type="text" name="ingredientName" />
-        <br />
-        <label htmlFor="ingredientOz">Oz: </label>
-        <input id="ingredientOz" type="number" name="ingredientOz" min="0" max="5" step="0.25"/>
-        <label htmlFor="ingredientName">Ingredient: </label>
-        <input id="ingredientName" type="text" name="ingredientName" />
 
       <input type="hidden" name="_csrf" value={props.csrf}/>
       <input className="makeDrinkSubmit" type="submit" value="Add Drink"/>
