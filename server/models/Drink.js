@@ -58,6 +58,18 @@ DrinkSchema.statics.findByOwner = (ownerId, callback) => {
   return DrinkModel.find(search).select('name baseIngredient ingredients').exec(callback);
 };
 
+DrinkSchema.statics.findAll = (callback) => {
+  return DrinkModel.find().select('name baseIngredient ingredients').exec(callback);
+};
+
+DrinkSchema.statics.findByBaseIngredient = (baseIngredient, callback) => {
+  const search = {
+    baseIngredient,
+  };
+
+  return DrinkModel.find(search).select('name baseIngredient ingredients').exec(callback);
+};
+
 DrinkModel = mongoose.model('Drink', DrinkSchema);
 
 module.exports.DrinkModel = DrinkModel;

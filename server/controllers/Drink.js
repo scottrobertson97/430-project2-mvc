@@ -13,6 +13,17 @@ const makerPage = (req, res) => {
   });
 };
 
+const allDrinksPage = (req, res) => {
+  Drink.DrinkModel.findAll((err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred.' });
+    }
+
+    return res.render('list', { csrfToken: req.csrfToken(), drinks: docs });
+  });
+};
+
 const makeDrink = (req, res) => {
   if (!req.body.name || !req.body.baseIngredient) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -66,6 +77,23 @@ const getDrinks = (request, response) => {
   });
 };
 
+const getAllDrinks = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Drink.DrinkModel.findAll((err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error occurred' });
+    }
+
+    return res.json({ drinks: docs });
+  });
+};
+
 module.exports.makerPage = makerPage;
 module.exports.make = makeDrink;
 module.exports.getDrinks = getDrinks;
+
+module.exports.getAllDrinks = getAllDrinks;
+module.exports.allDrinksPage = allDrinksPage;
